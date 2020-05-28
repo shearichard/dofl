@@ -11,4 +11,12 @@ Using the [virtualenv.pyz](https://virtualenv.pypa.io/en/stable/installation.htm
 
 The target python is 3.7 which is installed at /usr/local/bin/python3.7 on the development vm.
 
+## Docker perms
+When working on a new development machine for the first time remember to [add the current user to the 'docker' group](https://techoverflow.net/2017/03/01/solving-docker-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket/).
+
+```
+sudo usermod -a -G docker $USER
+```
+
+And exit your ssh session and reconnect before attempting a `docker build`.
 
