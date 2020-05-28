@@ -1,0 +1,8 @@
+.git
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+dofl37
+virtualenv.pyz
