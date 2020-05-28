@@ -25,6 +25,17 @@ def json_multivalueoutputtest():
     #
     return jsonify({ 'data': lst })
 
+@app.route('/query/<string:commonnameprefix>', methods = ['GET']) 
+def json_jsonquery(commonnameprefix):
+    #
+    lst = []
+    uccommonnameprefix = commonnameprefix.upper()
+    for idx, val in enumerate(LSTCOUNTRIES):
+        if LSTCOUNTRIES[idx][COMMONNAME].upper().startswith(uccommonnameprefix):
+            lst.append({'commonname': LSTCOUNTRIES[idx][COMMONNAME], 'capital': LSTCOUNTRIES[idx][CAPITAL], 'tld': LSTCOUNTRIES[idx][IANACOUNTRYCODETLD]})
+    #
+    return jsonify({ 'data': lst })
+
 @app.route('/multivalueoutputtest')
 def html_multivalueoutputtest():
     #
