@@ -21,7 +21,15 @@ def json_multivalueoutputtest():
     #
     lst = []
     for i in range(50):
-        lst.append({'commonname': LSTCOUNTRIES[i][COMMONNAME], 'capital': LSTCOUNTRIES[i][CAPITAL], 'tld': LSTCOUNTRIES[i][IANACOUNTRYCODETLD]})
+        lst.append({'commonname': LSTCOUNTRIES[i][COMMONNAME], 
+                    'capital': LSTCOUNTRIES[i][CAPITAL], 
+                    'formalname':LSTCOUNTRIES[i][FORMALNAME], 
+                    'type':LSTCOUNTRIES[i][TYPE], 
+                    'subtype':LSTCOUNTRIES[i][SUBTYPE], 
+                    'sovereignty':LSTCOUNTRIES[i][SOVEREIGNTY], 
+                    'currencycode':LSTCOUNTRIES[i][CURRENCYCODE], 
+                    'itutelephonecode':LSTCOUNTRIES[i][ITUTELEPHONECODE],
+                    'tld': LSTCOUNTRIES[i][IANACOUNTRYCODETLD]})
     #
     return jsonify({ 'data': lst })
 
@@ -32,7 +40,15 @@ def json_jsonquery(commonnameprefix):
     uccommonnameprefix = commonnameprefix.upper()
     for idx, val in enumerate(LSTCOUNTRIES):
         if LSTCOUNTRIES[idx][COMMONNAME].upper().startswith(uccommonnameprefix):
-            lst.append({'commonname': LSTCOUNTRIES[idx][COMMONNAME], 'capital': LSTCOUNTRIES[idx][CAPITAL], 'tld': LSTCOUNTRIES[idx][IANACOUNTRYCODETLD]})
+            lst.append({'commonname': LSTCOUNTRIES[idx][COMMONNAME], 
+                        'capital': LSTCOUNTRIES[idx][CAPITAL], 
+                        'formalname':LSTCOUNTRIES[idx][FORMALNAME], 
+                        'type':LSTCOUNTRIES[idx][TYPE], 
+                        'subtype':LSTCOUNTRIES[idx][SUBTYPE], 
+                        'sovereignty':LSTCOUNTRIES[idx][SOVEREIGNTY], 
+                        'currencycode':LSTCOUNTRIES[idx][CURRENCYCODE], 
+                        'itutelephonecode':LSTCOUNTRIES[idx][ITUTELEPHONECODE],
+                        'tld': LSTCOUNTRIES[idx][IANACOUNTRYCODETLD]})
     #
     return jsonify({ 'data': lst })
 
