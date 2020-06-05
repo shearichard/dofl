@@ -6,29 +6,23 @@ from dofldata import LSTCOUNTRIES, SORTORDER, COMMONNAME, FORMALNAME, TYPE, SUBT
 BODYSTYLE = '''<style>body{text-decoration-color: #222; font-family:sans-serif; font-size: 1.1em; color: #222; background-color: #eee; margin-left:10%; margin-right:30%; margin-top:5%; margin-bottom:10%;
 } .smallprint{font-size:0.6em}</style>'''
 
-VERSION = "3.0.0"
+VERSION = "3.1.0"
 
 app = Flask(__name__)
 
-def makehomepage():
-    lsthomepage = []
-    lsthomepage.append('''<p>The following API endpoints are available</p>''')
-    lsthomepage.append('''<h3>Filter JSON output</h3>''')
-    lsthomepage.append('''<p>Output JSON which represents a subset of the available Country data rows, for instance <span><a href=query/g>query/g</a></span> will return all those Countries whose name beings with a 'g' (independent of case)</p>''')
-    lsthomepage.append('''<h3>Application Status</h3>''')
-    lsthomepage.append('''<p>Output JSON containing data about the app serving the data by using the following url <span><a href="appstatus">appstatus</a></span></p>''')
-    lsthomepage.append('''<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>''')
-    lsthomepage.append('''<span class="smallprint">Docker/Kubernetes Testbed - Copyright Cuba Group 2020. Version : ''' + VERSION + '''</span>''')
-    strout = "".join(lsthomepage)
-    return strout
-
 @app.route('/')
 def index():
-    #
     strout = BODYSTYLE + '''<p><a href='/'>Home</a> | <a href='/multivalueoutputtest'>HTML Output Test</a> | <a href='/jsonmultivalueoutputtest'>JSON Output Test</a></p><p><h2>Docker/Kubernetes Testbed<h2></p>'''
     strout += makehomepage()
-
     return strout
+
+@app.route('/healthy')
+def json_healthy():
+    '''
+    Used by Kuberetes with respect to wellness checks
+    '''
+    dic = {'healthcheck': 'active'}
+    return jsonify({'data': dic})
 
 @app.route('/appstatus')
 def json_appstatus():
@@ -37,12 +31,10 @@ def json_appstatus():
 
 @app.route('/singlevalueoutputtest')
 def html_singlevalueoutputtest():
-    #
     return LSTCOUNTRIES[1][CAPITAL]
 
 @app.route('/jsonmultivalueoutputtest')
 def json_multivalueoutputtest():
-    #
     lst = []
     for idx in range(50):
         lst.append({'commonname': LSTCOUNTRIES[idx][COMMONNAME], 
@@ -109,6 +101,17 @@ def html_multivalueoutputtest():
     strOut = strOut + '''<p>''' + "".join(lst) + '''</p>'''
 
     return strOut
+def makehomepage():
+    lsthomepage = []
+    lsthomepage.append('''<p>The following API endpoints are available</p>''')
+    lsthomepage.append('''<h3>Filter JSON output</h3>''')
+    lsthomepage.append('''<p>Output JSON which represents a subset of the available Country data rows, for instance <span><a href=query/g>query/g</a></span> will return all those Countries whose name beings with a 'g' (independent of case)</p>''')
+    lsthomepage.append('''<h3>Application Status</h3>''')
+    lsthomepage.append('''<p>Output JSON containing data about the app serving the data by using the following url <span><a href="appstatus">appstatus</a></span></p>''')
+    lsthomepage.append('''<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>''')
+    lsthomepage.append('''<span class="smallprint">Docker/Kubernetes Testbed - Copyright Cuba Group 2020. Version : ''' + VERSION + '''</span>''')
+    strout = "".join(lsthomepage)
+    return strout
 
 
 if __name__ == '__main__':
