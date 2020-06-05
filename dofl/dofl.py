@@ -1,12 +1,13 @@
 from flask import Flask, jsonify
 import os
+from datetime import datetime
 
 from dofldata import LSTCOUNTRIES, SORTORDER, COMMONNAME, FORMALNAME, TYPE, SUBTYPE, SOVEREIGNTY, CAPITAL, CURRENCYCODE, ISO4217CURRENCYNAME, ITUTELEPHONECODE, ISO316612LETTERCODE, ISO316613LETTERCODE, ISO31661NUMBER, IANACOUNTRYCODETLD
 
 BODYSTYLE = '''<style>body{text-decoration-color: #222; font-family:sans-serif; font-size: 1.1em; color: #222; background-color: #eee; margin-left:10%; margin-right:30%; margin-top:5%; margin-bottom:10%;
 } .smallprint{font-size:0.6em}</style>'''
 
-VERSION = "3.1.0"
+VERSION = "3.2.0"
 
 app = Flask(__name__)
 
@@ -22,6 +23,14 @@ def json_healthy():
     Used by Kuberetes with respect to wellness checks
     '''
     dic = {'healthcheck': 'active'}
+    return jsonify({'data': dic})
+
+@app.route('/ready')
+def json_ready():
+    '''
+    Used by Kuberetes with respect to readiness checks
+    '''
+    dic = {'readiness': 'active'}
     return jsonify({'data': dic})
 
 @app.route('/appstatus')
@@ -102,6 +111,8 @@ def html_multivalueoutputtest():
 
     return strOut
 def makehomepage():
+    d=datetime.now()
+    strnowiso = d.strftime('%Y-%m-%d %H:%M:%S') 
     lsthomepage = []
     lsthomepage.append('''<p>The following API endpoints are available</p>''')
     lsthomepage.append('''<h3>Filter JSON output</h3>''')
@@ -109,7 +120,7 @@ def makehomepage():
     lsthomepage.append('''<h3>Application Status</h3>''')
     lsthomepage.append('''<p>Output JSON containing data about the app serving the data by using the following url <span><a href="appstatus">appstatus</a></span></p>''')
     lsthomepage.append('''<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>''')
-    lsthomepage.append('''<span class="smallprint">Docker/Kubernetes Testbed - Copyright Cuba Group 2020. Version : ''' + VERSION + '''</span>''')
+    lsthomepage.append('''<span class="smallprint">Docker/Kubernetes Testbed | Copyright Cuba Group 2020 | Version : ''' + VERSION + ''' | Page served ''' + strnowiso + '''</span>''')
     strout = "".join(lsthomepage)
     return strout
 
