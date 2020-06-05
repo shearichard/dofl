@@ -1,4 +1,3 @@
-
 #"Sort Order","Common Name","Formal Name","Type","Sub Type","Sovereignty","Capital","ISO 4217 Currency Code","ISO 4217 Currency Name","ITU-T Telephone Code","ISO 3166-1 2 Letter Code","ISO 3166-1 3 Letter Code","ISO 3166-1 Number","IANA Country Code TLD"
 #
 SORTORDER = 0
@@ -242,7 +241,6 @@ LSTCOUNTRIES.append(["222","Jersey","Bailiwick of Jersey","Dependency","Crown De
 LSTCOUNTRIES.append(["223","Anguilla","","Dependency","Overseas Territory","United Kingdom","The Valley","XCD","Dollar","+1-264","AI","AIA","660",".ai"])
 LSTCOUNTRIES.append(["224","Bermuda","","Dependency","Overseas Territory","United Kingdom","Hamilton","BMD","Dollar","+1-441","BM","BMU","060",".bm"])
 LSTCOUNTRIES.append(["225","British Indian Ocean Territory","","Dependency","Overseas Territory","United Kingdom","","","","+246","IO","IOT","086",".io"])
-LSTCOUNTRIES.append(["226","British Sovereign Base Areas","","Dependency","Overseas Territory","United Kingdom","Episkopi","CYP","Pound","+357","","","",])
 LSTCOUNTRIES.append(["227","British Virgin Islands","","Dependency","Overseas Territory","United Kingdom","Road Town","USD","Dollar","+1-284","VG","VGB","092",".vg"])
 LSTCOUNTRIES.append(["228","Cayman Islands","","Dependency","Overseas Territory","United Kingdom","George Town","KYD","Dollar","+1-345","KY","CYM","136",".ky"])
 LSTCOUNTRIES.append(["229","Falkland Islands (Islas Malvinas)","","Dependency","Overseas Territory","United Kingdom","Stanley","FKP","Pound","+500","FK","FLK","238",".fk"])
@@ -255,17 +253,8 @@ LSTCOUNTRIES.append(["235","Turks and Caicos Islands","","Dependency","Overseas 
 LSTCOUNTRIES.append(["236","Northern Mariana Islands","Commonwealth of The Northern Mariana Islands","Dependency","Commonwealth","United States","Saipan","USD","Dollar","+1-670","MP","MNP","580",".mp"])
 LSTCOUNTRIES.append(["237","Puerto Rico","Commonwealth of Puerto Rico","Dependency","Commonwealth","United States","San Juan","USD","Dollar","+1-787 and 1-939","PR","PRI","630",".pr"])
 LSTCOUNTRIES.append(["238","American Samoa","Territory of American Samoa","Dependency","Territory","United States","Pago Pago","USD","Dollar","+1-684","AS","ASM","016",".as"])
-LSTCOUNTRIES.append(["239","Baker Island","","Dependency","Territory","United States","","","","","UM","UMI","581",])
 LSTCOUNTRIES.append(["240","Guam","Territory of Guam","Dependency","Territory","United States","Hagatna","USD","Dollar","+1-671","GU","GUM","316",".gu"])
-LSTCOUNTRIES.append(["241","Howland Island","","Dependency","Territory","United States","","","","","UM","UMI","581",])
-LSTCOUNTRIES.append(["242","Jarvis Island","","Dependency","Territory","United States","","","","","UM","UMI","581",])
-LSTCOUNTRIES.append(["243","Johnston Atoll","","Dependency","Territory","United States","","","","","UM","UMI","581",])
-LSTCOUNTRIES.append(["244","Kingman Reef","","Dependency","Territory","United States","","","","","UM","UMI","581",])
-LSTCOUNTRIES.append(["245","Midway Islands","","Dependency","Territory","United States","","","","","UM","UMI","581",])
-LSTCOUNTRIES.append(["246","Navassa Island","","Dependency","Territory","United States","","","","","UM","UMI","581",])
-LSTCOUNTRIES.append(["247","Palmyra Atoll","","Dependency","Territory","United States","","","","","UM","UMI","581",])
 LSTCOUNTRIES.append(["248","U.S. Virgin Islands","United States Virgin Islands","Dependency","Territory","United States","Charlotte Amalie","USD","Dollar","+1-340","VI","VIR","850",".vi"])
-LSTCOUNTRIES.append(["249","Wake Island","","Dependency","Territory","United States","","","","","UM","UMI","850",])
 LSTCOUNTRIES.append(["250","Hong Kong","Hong Kong Special Administrative Region","Proto Dependency","Special Administrative Region","China","","HKD","Dollar","+852","HK","HKG","344",".hk"])
 LSTCOUNTRIES.append(["251","Macau","Macau Special Administrative Region","Proto Dependency","Special Administrative Region","China","Macau","MOP","Pataca","+853","MO","MAC","446",".mo"])
 LSTCOUNTRIES.append(["252","Faroe Islands","","Proto Dependency","","Denmark","Torshavn","DKK","Krone","+298","FO","FRO","234",".fo"])
@@ -279,7 +268,6 @@ LSTCOUNTRIES.append(["259","Aruba","","Proto Dependency","","Netherlands","Oranj
 LSTCOUNTRIES.append(["260","Netherlands Antilles","","Proto Dependency","","Netherlands","Willemstad","ANG","Guilder","+599","AN","ANT","530",".an"])
 LSTCOUNTRIES.append(["261","Svalbard","","Proto Dependency","","Norway","Longyearbyen","NOK","Krone","+47","SJ","SJM","744",".sj"])
 LSTCOUNTRIES.append(["262","Ascension","","Proto Dependency","Dependency of Saint Helena","United Kingdom","Georgetown","SHP","Pound","+247","AC","ASC","",".ac"])
-LSTCOUNTRIES.append(["263","Tristan da Cunha","","Proto Dependency","Dependency of Saint Helena","United Kingdom","Edinburgh","SHP","Pound","+290","TA","TAA","",])
 LSTCOUNTRIES.append(["264","Antarctica","","Disputed Territory","","Undetermined","","","","","AQ","ATA","010",".aq"])
 LSTCOUNTRIES.append(["265","Kosovo","","Disputed Territory","","Administrated by the UN","Pristina","CSD and EUR","Dinar and Euro","+381","CS","SCG","891",".cs and .yu"])
 LSTCOUNTRIES.append(["266","Palestinian Territories (Gaza Strip and West Bank)","","Disputed Territory","","Administrated by Israel","Gaza City (Gaza Strip) and Ramallah (West Bank)","ILS","Shekel","+970","PS","PSE","275",".ps"])
