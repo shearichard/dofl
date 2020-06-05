@@ -1,15 +1,39 @@
 from flask import Flask, jsonify
+import os
 
 from dofldata import LSTCOUNTRIES, SORTORDER, COMMONNAME, FORMALNAME, TYPE, SUBTYPE, SOVEREIGNTY, CAPITAL, CURRENCYCODE, ISO4217CURRENCYNAME, ITUTELEPHONECODE, ISO316612LETTERCODE, ISO316613LETTERCODE, ISO31661NUMBER, IANACOUNTRYCODETLD
 
-BODYSTYLE = '''<style>body{text-decoration-color: #222; font-family:sans-serif; font-size: 1.1em; color: #222; background-color: #eee;}</style>'''
+BODYSTYLE = '''<style>body{text-decoration-color: #222; font-family:sans-serif; font-size: 1.1em; color: #222; background-color: #eee; margin-left:10%; margin-right:30%; margin-top:5%; margin-bottom:10%;
+} .smallprint{font-size:0.6em}</style>'''
+
+VERSION = "3.0.0"
 
 app = Flask(__name__)
 
+def makehomepage():
+    lsthomepage = []
+    lsthomepage.append('''<p>The following API endpoints are available</p>''')
+    lsthomepage.append('''<h3>Filter JSON output</h3>''')
+    lsthomepage.append('''<p>Output JSON which represents a subset of the available Country data rows, for instance <span><a href=query/g>query/g</a></span> will return all those Countries whose name beings with a 'g' (independent of case)</p>''')
+    lsthomepage.append('''<h3>Application Status</h3>''')
+    lsthomepage.append('''<p>Output JSON containing data about the app serving the data by using the following url <span><a href="appstatus">appstatus</a></span></p>''')
+    lsthomepage.append('''<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>''')
+    lsthomepage.append('''<span class="smallprint">Docker/Kubernetes Testbed - Copyright Cuba Group 2020. Version : ''' + VERSION + '''</span>''')
+    strout = "".join(lsthomepage)
+    return strout
+
 @app.route('/')
-def hello_world():
+def index():
     #
-    return BODYSTYLE + '''<p><a href='/'>Home</a> | <a href='/multivalueoutputtest'>HTML Output Test</a> | <a href='/jsonmultivalueoutputtest'>JSON Output Test</a></p><p><h2>TCG Docker/Kubernetes Testbed<h2></p>'''
+    strout = BODYSTYLE + '''<p><a href='/'>Home</a> | <a href='/multivalueoutputtest'>HTML Output Test</a> | <a href='/jsonmultivalueoutputtest'>JSON Output Test</a></p><p><h2>Docker/Kubernetes Testbed<h2></p>'''
+    strout += makehomepage()
+
+    return strout
+
+@app.route('/appstatus')
+def json_appstatus():
+    dic = {'pid': os.getpid(), 'appversion': VERSION}
+    return jsonify({'data': dic})
 
 @app.route('/singlevalueoutputtest')
 def html_singlevalueoutputtest():
@@ -20,22 +44,21 @@ def html_singlevalueoutputtest():
 def json_multivalueoutputtest():
     #
     lst = []
-    for i in range(50):
-        lst.append({'commonname': LSTCOUNTRIES[i][COMMONNAME], 
-                    'capital': LSTCOUNTRIES[i][CAPITAL], 
-                    'formalname':LSTCOUNTRIES[i][FORMALNAME], 
-                    'type':LSTCOUNTRIES[i][TYPE], 
-                    'subtype':LSTCOUNTRIES[i][SUBTYPE], 
-                    'sovereignty':LSTCOUNTRIES[i][SOVEREIGNTY], 
-                    'currencycode':LSTCOUNTRIES[i][CURRENCYCODE], 
-                    'itutelephonecode':LSTCOUNTRIES[i][ITUTELEPHONECODE],
-                    'tld': LSTCOUNTRIES[i][IANACOUNTRYCODETLD]})
+    for idx in range(50):
+        lst.append({'commonname': LSTCOUNTRIES[idx][COMMONNAME], 
+                    'capital': LSTCOUNTRIES[idx][CAPITAL], 
+                    'formalname':LSTCOUNTRIES[idx][FORMALNAME], 
+                    'type':LSTCOUNTRIES[idx][TYPE], 
+                    'subtype':LSTCOUNTRIES[idx][SUBTYPE], 
+                    'sovereignty':LSTCOUNTRIES[idx][SOVEREIGNTY], 
+                    'currencycode':LSTCOUNTRIES[idx][CURRENCYCODE], 
+                    'itutelephonecode':LSTCOUNTRIES[idx][ITUTELEPHONECODE],
+                    'tld': LSTCOUNTRIES[idx][IANACOUNTRYCODETLD]})
     #
     return jsonify({ 'data': lst })
 
 @app.route('/query/<string:commonnameprefix>', methods = ['GET']) 
 def json_jsonquery(commonnameprefix):
-    #
     lst = []
     uccommonnameprefix = commonnameprefix.upper()
     for idx, val in enumerate(LSTCOUNTRIES):
@@ -66,16 +89,16 @@ def html_multivalueoutputtest():
     lst.append('''}''')
     lst.append('''</style>''')
     lst.append('''<table>''')
-    for i in range(50):
+    for idx in range(50):
         lst.append('''<tr>''')
         lst.append('''<td>''')
-        lst.append(LSTCOUNTRIES[i][COMMONNAME])
+        lst.append(LSTCOUNTRIES[idx][COMMONNAME])
         lst.append('''</td>''')
         lst.append('''<td>''')
-        lst.append(LSTCOUNTRIES[i][CAPITAL])
+        lst.append(LSTCOUNTRIES[idx][CAPITAL])
         lst.append('''</td>''')
         lst.append('''<td>''')
-        lst.append(LSTCOUNTRIES[i][IANACOUNTRYCODETLD])
+        lst.append(LSTCOUNTRIES[idx][IANACOUNTRYCODETLD])
         lst.append('''</td>''')
         lst.append('''</tr>''')
     lst.append('''</table>''')
