@@ -7,7 +7,7 @@ from dofldata import LSTCOUNTRIES, SORTORDER, COMMONNAME, FORMALNAME, TYPE, SUBT
 BODYSTYLE = '''<style>body{text-decoration-color: #222; font-family:sans-serif; font-size: 1.1em; color: #222; background-color: #eee; margin-left:10%; margin-right:30%; margin-top:5%; margin-bottom:10%;
 } .smallprint{font-size:0.6em}</style>'''
 
-VERSION = "3.2.0"
+VERSION = "3.3.0"
 
 app = Flask(__name__)
 
@@ -89,6 +89,9 @@ def html_multivalueoutputtest():
     lst.append('''border: 1px solid black;''')
     lst.append('''}''')
     lst.append('''</style>''')
+    lst.append('''<p>''')
+    lst.append('''The following table shows the first fifty values in the list of Countries.''')
+    lst.append('''</p>''')
     lst.append('''<table>''')
     for idx in range(50):
         lst.append('''<tr>''')
@@ -106,7 +109,7 @@ def html_multivalueoutputtest():
     #
     strOut = '''<p><a href='/'>Home</a> | <a href='/multivalueoutputtest'>HTML Output Test</a> | <a href='/jsonmultivalueoutputtest'>JSON Output Test</a></p>'''
     strOut = strOut + '''<h2>TCG Docker/Kubernetes Testbed<h2>'''
-    strOut = strOut + '''<h3>Multivalue Output Test<h3>'''
+    strOut = strOut + '''<h3>Multivalue Output Test</h3>'''
     strOut = strOut + '''<p>''' + "".join(lst) + '''</p>'''
 
     return strOut
