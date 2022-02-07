@@ -17,6 +17,24 @@ Using the [virtualenv.pyz](https://virtualenv.pypa.io/en/stable/installation.htm
 
 The target python is 3.7 which is installed at /usr/local/bin/python3.7 on the development vm.
 
+
+## Docker Cheat Sheet
+
+```
+$ docker build -t dkr-flsk .;docker image ls;
+...
+$ docker container ls --all
+...
+$ docker rm abdd314c875c
+...
+$ docker container ls --all
+...
+$ docker run -p 8080:8080 -d dkr-flsk
+...
+$ docker container ls --all
+```
+
+
 ## Docker perms
 When working on a new development machine for the first time remember to [add the current user to the 'docker' group](https://techoverflow.net/2017/03/01/solving-docker-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket/).
 

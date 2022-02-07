@@ -7,7 +7,7 @@ from dofldata import LSTCOUNTRIES, SORTORDER, COMMONNAME, FORMALNAME, TYPE, SUBT
 BODYSTYLE = '''<style>body{text-decoration-color: #222; font-family:sans-serif; font-size: 1.1em; color: #222; background-color: #eee; margin-left:10%; margin-right:30%; margin-top:5%; margin-bottom:10%;
 } .smallprint{font-size:0.6em}</style>'''
 
-VERSION = "3.3.0"
+VERSION = "3.3.1"
 
 app = Flask(__name__)
 
@@ -129,4 +129,4 @@ def makehomepage():
 
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=8080)
